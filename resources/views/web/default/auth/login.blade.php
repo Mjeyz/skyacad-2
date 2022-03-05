@@ -20,7 +20,8 @@
                     </div>
 
                     <form method="Post" action="/login" class="mt-35">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
+                        @csrf
                         <div class="form-group">
                             <input placeholder="Email address" name="username" type="text" class="form-control @error('username') is-invalid @enderror" id="username"
                                    value="{{ old('username') }}" aria-describedby="emailHelp">

@@ -161,7 +161,7 @@
 
                             <div class="mt-20 d-flex flex-column">
                                 @if($course->price > 0)
-                                    <button type="{{ $canSale ? 'submit' : 'button' }}" @if(!$canSale) disabled @endif class="btn btn-primary course-card-button">
+                                    <button type="{{ $canSale ? 'submit' : 'button' }}" @if(!$canSale) disabled @endif class="btn btn-primary course-card-button" onclick="cartButtonReveal()">
                                         @if($userHasBought)
                                             {{ trans('panel.purchased') }}
                                         @else
@@ -180,6 +180,14 @@
                 </form>
                         
                     </div>
+                </div>
+                <style>
+                    .reveal{
+                        display: none
+                    }
+                </style>
+                <div class="cart-button-go">
+                    <a href="#" id="reveal" class="btn btn-primary">Let's go to the mars</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -704,6 +712,11 @@
 @endsection
 
 @push('scripts_bottom')
+    <script>
+        function cartButtonReveal(){
+            document.getElementById("reveal").style.display = 'block';
+        }
+    </script>
     <script src="/assets/default/js/parts/time-counter-down.min.js"></script>
     <script src="/assets/default/vendors/barrating/jquery.barrating.min.js"></script>
     <script src="/assets/default/vendors/video/video.min.js"></script>

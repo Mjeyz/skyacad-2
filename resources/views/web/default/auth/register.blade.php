@@ -137,7 +137,7 @@
                     </div>
                      <div class="mt-20 text-center">
                         <a href="/login" class="text-secondary font-weight-bold">
-                            <button style="background: #707070;" class="btn btn-primary btn-block mt-20">{{ trans('auth.signup') }}</button>
+                            <button style="background: #707070;" class="btn btn-primary btn-block mt-20">{{ trans('Sign in') }}</button>
                         </a>
                     </div>
 
