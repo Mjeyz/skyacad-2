@@ -55,6 +55,7 @@ return [
     'forced' => 'Forced',
     'yes' => 'Yes',
     'no' => 'No',
+    'course_card_desc' => 'Register now and be our team fillthe form and we will contact you.',
 
     'course_sessions' => 'Class Sessions',
     'previous_lesson' => 'Previous Lesson',

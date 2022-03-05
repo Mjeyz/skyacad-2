@@ -306,5 +306,6 @@ class HomeController extends Controller
         ];
 
         return view(getTemplate() . '.pages.home', $data);
+        // return view(getTemplate() . '.course.index', $data);
     }
 }

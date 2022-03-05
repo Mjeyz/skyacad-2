@@ -7,8 +7,288 @@
 
 
 @section('content')
-    <section class="course-cover-container ">
-        {{-- <img src="{{ $course->getImageCover() }}" class="img-cover course-cover-img" alt="{{ $course->title }}"/> --}}
+    <div class="container mt-50">
+        <h2 class="custom-heading">{{trans('Course checkout')}}</h2>
+        <div class="row mt-30">
+            <div class="col-md-4">
+                <div class="course-card-buy-page">
+                    <img src="{{ $course->getImage() }}" alt="">
+                    <div class="text-data">
+                        @if(!empty($course->category))
+                            <span class="d-block font-14 mt-10 pb-10">{{ trans('public.in') }} <a href="{{ $course->category->getUrl() }}" target="_blank" class="home-course-category">{{ $course->category->title }}</a></span>
+                        @endif
+                        <script>
+                        </script>
+                        <h3>{{ $course->title }}</h3>
+                        @if($course->price > 0)
+                                    <span id="realPrice" data-value="{{ $course->price }}"
+                                          data-special-offer="{{ !empty($activeSpecialOffer) ? $activeSpecialOffer->percent : ''}}"
+                                          style="font-size: 20px"
+                                          class="pb-10 @if(!empty($activeSpecialOffer)) text-gray text-decoration-line-through mr-15 @else text-primary @endif">{{ $currency }}{{ number_format($course->price,2) }}</span>
+                                    <span style="font-size: 20px" id="priceWithDiscount" class="text-primary">{{ !empty($activeSpecialOffer) ? ($currency.number_format($course->price - ($course->price * $activeSpecialOffer->percent / 100),2)) : '' }}</span>
+                            @else
+                                    <span style="pb-10 font-size: 20px" class="text-primary">{{ trans('public.free') }}</span>
+                            @endif
+                        <p> {{trans('public.course_card_desc')}} </p>
+                        <form action="/cart/store" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="webinar_id" value="{{ $course->id }}">
+                            @php
+                                $userHasBought = $course->checkUserHasBought();
+                                $canSale = ($course->canSale() and !$userHasBought);
+                            @endphp
+
+                            <div class="mt-20 d-flex flex-column">
+                                @if($course->price > 0)
+                                    <button type="{{ $canSale ? 'submit' : 'button' }}" @if(!$canSale) disabled @endif class="btn btn-primary course-card-button">
+                                        @if($userHasBought)
+                                            {{ trans('panel.purchased') }}
+                                        @else
+                                            {{ trans('public.add_to_cart') }}
+                                        @endif
+                                    </button>
+
+                                    @if($canSale and $course->subscribe)
+                                        <a href="{{ $canSale ? '/subscribes/apply/'. $course->slug : '#' }}" class="btn btn-outline-primary btn-subscribe mt-20 @if(!$canSale) disabled @endif">{{ trans('public.subscribe') }}</a>
+                                    @endif
+                                @else
+                                    <a href="{{ $canSale ? '/course/'. $course->slug .'/free' : '#' }}" class="btn btn-primary course-card-button @if(!$canSale) disabled @endif">{{ trans('public.enroll_on_webinar') }}</a>
+                                @endif
+                            </div>
+
+                </form>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                 @if(!empty($course->category))
+                    <span class="d-block course-buy-page-rating mt-10 pb-10">{{ trans('public.in') }} <a href="{{ $course->category->getUrl() }}" target="_blank" class="home-course-category">{{ $course->category->title }}</a></span>
+                @endif
+                <h3 class="course-buy-page-heading">{{ $course->title }}</h3>
+                @if($course->price > 0)
+                    <span id="realPrice" data-value="{{ $course->price }}"
+                        data-special-offer="{{ !empty($activeSpecialOffer) ? $activeSpecialOffer->percent : ''}}"
+                        class="course-buy-page-price pb-10 @if(!empty($activeSpecialOffer)) text-gray text-decoration-line-through mr-15 @else text-primary @endif">{{ $currency }}{{ number_format($course->price,2) }}</span>
+                    <span style="font-size: 20px" id="priceWithDiscount" class="text-primary">{{ !empty($activeSpecialOffer) ? ($currency.number_format($course->price - ($course->price * $activeSpecialOffer->percent / 100),2)) : '' }}</span>
+                @else
+                    <span class="course-buy-page-price text-primary">{{ trans('public.free') }}</span>
+                @endif
+                @if($course->description)
+                    <div class="mt-20 mb-40">
+                        <p class="mt-15 course-buy-page-desc">
+                            {!! $course->description !!}
+                        </p>
+                    </div>
+                @endif
+
+                <div class="row mt-10 mb-40 ">
+                    <div class="col-md-4">
+                        <div class="mt-20 d-flex align-items-center justify-content-between text-gray">
+                            <div class="d-flex align-items-center">
+                                {{-- <i data-feather="clock" width="20" height="20"></i> --}}
+                                <span class="course-buy-page-bold ml-5 ">{{ trans('public.duration') }}:</span>
+                            </div>
+                            <span class="course-buy-page-next-p">{{ convertMinutesToHourAndMinute(!empty($course->duration) ? $course->duration : 0) }} {{ trans('home.hours') }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mt-20 d-flex align-items-center justify-content-between text-gray">
+                            <div class="d-flex align-items-center">
+                                {{-- <i data-feather="clock" width="20" height="20"></i> --}}
+                                <span class="ml-5 course-buy-page-bold ">{{ trans('Location') }}:</span>
+                            </div>
+                            <span class="course-buy-page-next-p">{{ trans('Riyadh') }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mt-20 d-flex align-items-center justify-content-between text-gray">
+                            <div class="d-flex align-items-center">
+                                {{-- <i data-feather="users" width="20" height="20"></i> --}}
+                                <span class="ml-5 course-buy-page-bold ">{{ trans('Trainer') }}:</span>
+                            </div>
+                            <span class="course-buy-page-next-p">{{ $course->sales_count }} {{ trans('quiz.students') }}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4 style="font: normal normal bold 20px/24px Ubuntu; letter-spacing: 0px; color: #5C5D5C;" class="mb-20"> {{trans('Approved by')}} </h4>
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="/assets/default/img/Image-105.png" alt="">
+                    </div>
+                    <div class="col-md-3">
+                        <img style="height: 32px" src="/assets/default/img/Image-106.png" alt="">
+                    </div>
+                    <div class="col-md-3">
+                        <img src="/assets/default/img/Image-107.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-50">
+        <h2 class="custom-heading mt-50 mb-20"> {{trans('Course you may like')}} </h2>
+        <div class="row mt-20">
+            <div class="col-md-4">
+                <div class="course-card-buy-page">
+                    <img src="{{ $course->getImage() }}" alt="">
+                    <div class="text-data">
+                        @if(!empty($course->category))
+                            <span class="d-block font-14 mt-10 pb-10">{{ trans('public.in') }} <a href="{{ $course->category->getUrl() }}" target="_blank" class="home-course-category">{{ $course->category->title }}</a></span>
+                        @endif
+                        <script>
+                        </script>
+                        <h3>{{ $course->title }}</h3>
+                        @if($course->price > 0)
+                                    <span id="realPrice" data-value="{{ $course->price }}"
+                                          data-special-offer="{{ !empty($activeSpecialOffer) ? $activeSpecialOffer->percent : ''}}"
+                                          style="font-size: 20px"
+                                          class="pb-10 @if(!empty($activeSpecialOffer)) text-gray text-decoration-line-through mr-15 @else text-primary @endif">{{ $currency }}{{ number_format($course->price,2) }}</span>
+                                    <span style="font-size: 20px" id="priceWithDiscount" class="text-primary">{{ !empty($activeSpecialOffer) ? ($currency.number_format($course->price - ($course->price * $activeSpecialOffer->percent / 100),2)) : '' }}</span>
+                            @else
+                                    <span style="pb-10 font-size: 20px" class="text-primary">{{ trans('public.free') }}</span>
+                            @endif
+                        <p> {{trans('public.course_card_desc')}} </p>
+                        <form action="/cart/store" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="webinar_id" value="{{ $course->id }}">
+                            @php
+                                $userHasBought = $course->checkUserHasBought();
+                                $canSale = ($course->canSale() and !$userHasBought);
+                            @endphp
+
+                            <div class="mt-20 d-flex flex-column">
+                                @if($course->price > 0)
+                                    <button type="{{ $canSale ? 'submit' : 'button' }}" @if(!$canSale) disabled @endif class="btn btn-primary course-card-button">
+                                        @if($userHasBought)
+                                            {{ trans('panel.purchased') }}
+                                        @else
+                                            {{ trans('public.add_to_cart') }}
+                                        @endif
+                                    </button>
+
+                                    @if($canSale and $course->subscribe)
+                                        <a href="{{ $canSale ? '/subscribes/apply/'. $course->slug : '#' }}" class="btn btn-outline-primary btn-subscribe mt-20 @if(!$canSale) disabled @endif">{{ trans('public.subscribe') }}</a>
+                                    @endif
+                                @else
+                                    <a href="{{ $canSale ? '/course/'. $course->slug .'/free' : '#' }}" class="btn btn-primary course-card-button @if(!$canSale) disabled @endif">{{ trans('public.enroll_on_webinar') }}</a>
+                                @endif
+                            </div>
+
+                </form>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="course-card-buy-page">
+                    <img src="{{ $course->getImage() }}" alt="">
+                    <div class="text-data">
+                        @if(!empty($course->category))
+                            <span class="d-block font-14 mt-10 pb-10">{{ trans('public.in') }} <a href="{{ $course->category->getUrl() }}" target="_blank" class="home-course-category">{{ $course->category->title }}</a></span>
+                        @endif
+                        <script>
+                        </script>
+                        <h3>{{ $course->title }}</h3>
+                        @if($course->price > 0)
+                                    <span id="realPrice" data-value="{{ $course->price }}"
+                                          data-special-offer="{{ !empty($activeSpecialOffer) ? $activeSpecialOffer->percent : ''}}"
+                                          style="font-size: 20px"
+                                          class="pb-10 @if(!empty($activeSpecialOffer)) text-gray text-decoration-line-through mr-15 @else text-primary @endif">{{ $currency }}{{ number_format($course->price,2) }}</span>
+                                    <span style="font-size: 20px" id="priceWithDiscount" class="text-primary">{{ !empty($activeSpecialOffer) ? ($currency.number_format($course->price - ($course->price * $activeSpecialOffer->percent / 100),2)) : '' }}</span>
+                            @else
+                                    <span style="pb-10 font-size: 20px" class="text-primary">{{ trans('public.free') }}</span>
+                            @endif
+                        <p> {{trans('public.course_card_desc')}} </p>
+                        <form action="/cart/store" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="webinar_id" value="{{ $course->id }}">
+                            @php
+                                $userHasBought = $course->checkUserHasBought();
+                                $canSale = ($course->canSale() and !$userHasBought);
+                            @endphp
+
+                            <div class="mt-20 d-flex flex-column">
+                                @if($course->price > 0)
+                                    <button type="{{ $canSale ? 'submit' : 'button' }}" @if(!$canSale) disabled @endif class="btn btn-primary course-card-button">
+                                        @if($userHasBought)
+                                            {{ trans('panel.purchased') }}
+                                        @else
+                                            {{ trans('public.add_to_cart') }}
+                                        @endif
+                                    </button>
+
+                                    @if($canSale and $course->subscribe)
+                                        <a href="{{ $canSale ? '/subscribes/apply/'. $course->slug : '#' }}" class="btn btn-outline-primary btn-subscribe mt-20 @if(!$canSale) disabled @endif">{{ trans('public.subscribe') }}</a>
+                                    @endif
+                                @else
+                                    <a href="{{ $canSale ? '/course/'. $course->slug .'/free' : '#' }}" class="btn btn-primary course-card-button @if(!$canSale) disabled @endif">{{ trans('public.enroll_on_webinar') }}</a>
+                                @endif
+                            </div>
+
+                </form>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="course-card-buy-page">
+                    <img src="{{ $course->getImage() }}" alt="">
+                    <div class="text-data">
+                        @if(!empty($course->category))
+                            <span class="d-block font-14 mt-10 pb-10">{{ trans('public.in') }} <a href="{{ $course->category->getUrl() }}" target="_blank" class="home-course-category">{{ $course->category->title }}</a></span>
+                        @endif
+                        <script>
+                        </script>
+                        <h3>{{ $course->title }}</h3>
+                        @if($course->price > 0)
+                                    <span id="realPrice" data-value="{{ $course->price }}"
+                                          data-special-offer="{{ !empty($activeSpecialOffer) ? $activeSpecialOffer->percent : ''}}"
+                                          style="font-size: 20px"
+                                          class="pb-10 @if(!empty($activeSpecialOffer)) text-gray text-decoration-line-through mr-15 @else text-primary @endif">{{ $currency }}{{ number_format($course->price,2) }}</span>
+                                    <span style="font-size: 20px" id="priceWithDiscount" class="text-primary">{{ !empty($activeSpecialOffer) ? ($currency.number_format($course->price - ($course->price * $activeSpecialOffer->percent / 100),2)) : '' }}</span>
+                            @else
+                                    <span style="pb-10 font-size: 20px" class="text-primary">{{ trans('public.free') }}</span>
+                            @endif
+                        <p> {{trans('public.course_card_desc')}} </p>
+                        <form action="/cart/store" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="webinar_id" value="{{ $course->id }}">
+                            @php
+                                $userHasBought = $course->checkUserHasBought();
+                                $canSale = ($course->canSale() and !$userHasBought);
+                            @endphp
+
+                            <div class="mt-20 d-flex flex-column">
+                                @if($course->price > 0)
+                                    <button type="{{ $canSale ? 'submit' : 'button' }}" @if(!$canSale) disabled @endif class="btn btn-primary course-card-button">
+                                        @if($userHasBought)
+                                            {{ trans('panel.purchased') }}
+                                        @else
+                                            {{ trans('public.add_to_cart') }}
+                                        @endif
+                                    </button>
+
+                                    @if($canSale and $course->subscribe)
+                                        <a href="{{ $canSale ? '/subscribes/apply/'. $course->slug : '#' }}" class="btn btn-outline-primary btn-subscribe mt-20 @if(!$canSale) disabled @endif">{{ trans('public.subscribe') }}</a>
+                                    @endif
+                                @else
+                                    <a href="{{ $canSale ? '/course/'. $course->slug .'/free' : '#' }}" class="btn btn-primary course-card-button @if(!$canSale) disabled @endif">{{ trans('public.enroll_on_webinar') }}</a>
+                                @endif
+                            </div>
+
+                </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- <section class="course-cover-container ">
+        <img src="{{ $course->getImageCover() }}" class="img-cover course-cover-img" alt="{{ $course->title }}"/>
         <div class="cover-content pt-40">
             <div class="container position-relative">
                 @if(!empty($activeSpecialOffer))
@@ -17,47 +297,14 @@
                             <strong class="font-16 text-dark-blue font-weight-bold">{{ trans('panel.special_offer') }}</strong>
                             <span class="font-14 text-gray">{{ $activeSpecialOffer->name }}</span>
                         </div>
-                        <div class="">
-                            @php
-                                $remainingTimes = $activeSpecialOffer->getRemainingTimes()
-                            @endphp
-                            <div id="offerCountDown" class="d-flex time-counter-down"
-                                 data-day="{{ $remainingTimes['day'] }}"
-                                 data-hour="{{ $remainingTimes['hour'] }}"
-                                 data-minute="{{ $remainingTimes['minute'] }}"
-                                 data-second="{{ $remainingTimes['second'] }}">
-
-                                <div class="d-flex align-items-center flex-column mr-10">
-                                    <span class="bg-gray300 rounded p-10 font-16 font-weight-bold text-dark time-item days"></span>
-                                    <span class="font-12 mt-1 text-gray">{{ trans('public.day') }}</span>
-                                </div>
-                                <div class="d-flex align-items-center flex-column mr-10">
-                                    <span class="bg-gray300 rounded p-10 font-16 font-weight-bold text-dark time-item hours"></span>
-                                    <span class="font-12 mt-1 text-gray">{{ trans('public.hr') }}</span>
-                                </div>
-                                <div class="d-flex align-items-center flex-column mr-10">
-                                    <span class="bg-gray300 rounded p-10 font-16 font-weight-bold text-dark time-item minutes"></span>
-                                    <span class="font-12 mt-1 text-gray">{{ trans('public.min') }}</span>
-                                </div>
-                                <div class="d-flex align-items-center flex-column">
-                                    <span class="bg-gray300 rounded p-10 font-16 font-weight-bold text-dark time-item seconds"></span>
-                                    <span class="font-12 mt-1 text-gray">{{ trans('public.sec') }}</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="offer-percent-box d-flex flex-column align-items-center justify-content-center">
-                            <span class="percent font-30 text-white">{{ $activeSpecialOffer->percent }}%</span>
-                            <span class="off font-16 text-white">{{ trans('public.off') }}</span>
-                        </div>
                     </div>
                 @endif
             </div>
         </div>
 
-    </section>
+    </section> --}}
 
-    <section class="container course-content-section">
+    {{-- <section class="container course-content-section">
         <div class="row">
             <div class="col-12 col-lg-8">
                 <div class="course-content-body user-select-none">
@@ -371,11 +618,9 @@
                     </div>
                 </div>
 
-                {{-- organization --}}
                 @if($course->creator_id != $course->teacher_id)
                     @include('web.default.course.sidebar_instructor_profile', ['courseTeacher' => $course->creator])
                 @endif
-                {{-- teacher --}}
                 @include('web.default.course.sidebar_instructor_profile', ['courseTeacher' => $course->teacher])
 
                 @if($course->webinarPartnerTeacher->count() > 0)
@@ -383,9 +628,6 @@
                         @include('web.default.course.sidebar_instructor_profile', ['courseTeacher' => $webinarPartnerTeacher->teacher])
                     @endforeach
                 @endif
-                {{-- ./ teacher --}}
-
-                {{-- tags --}}
                 @if($course->tags->count() > 0)
                     <div class="rounded-lg tags-card shadow-sm mt-35 px-25 py-20">
                         <h3 class="sidebar-title font-16 text-secondary font-weight-bold">{{ trans('public.tags') }}</h3>
@@ -397,7 +639,6 @@
                         </div>
                     </div>
                 @endif
-                {{-- ads --}}
                 @if(!empty($advertisingBannersSidebar) and count($advertisingBannersSidebar))
                     <div class="row">
                         @foreach($advertisingBannersSidebar as $sidebarBanner)
@@ -413,7 +654,6 @@
             </div>
         </div>
 
-        {{-- Ads Bannaer --}}
         @if(!empty($advertisingBanners) and count($advertisingBanners))
             <div class="mt-30 mt-md-50">
                 <div class="row">
@@ -427,10 +667,9 @@
                 </div>
             </div>
         @endif
-        {{-- ./ Ads Bannaer --}}
-    </section>
+    </section> --}}
 
-    <div id="webinarReportModal" class="d-none">
+    {{-- <div id="webinarReportModal" class="d-none">
         <h3 class="section-title after-line font-20 text-dark-blue">{{ trans('product.report_the_course') }}</h3>
 
         <form action="/course/{{ $course->id }}/report" method="post" class="mt-25">
@@ -459,7 +698,7 @@
                 <button type="button" class="btn btn-sm btn-danger ml-10 close-swl">{{ trans('public.close') }}</button>
             </div>
         </form>
-    </div>
+    </div> --}}
 
     @include('web.default.course.share_modal')
 @endsection
