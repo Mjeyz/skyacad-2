@@ -387,8 +387,8 @@ p.custom-p{
 
  .header-search {
     position: relative;
-    width: 557px;
-    height: 50px;
+    width: 448px;
+    height: 48px;
     box-shadow: 0px 4px 64px #13173D1A;
     border-radius: 15px;
 }
@@ -441,7 +441,7 @@ p.custom-p{
 
 @media (max-width: 768px) {
     .header-search {
-        width: 296px;
+            width: 323px;
     }
 }
 @media (max-width: 1024px) {
@@ -561,6 +561,8 @@ p.custom-p{
     flex-wrap: wrap;
 }
 
+
+
 .custom-testomonials .columns-container .first {
     width: 25%;
 }
@@ -592,4 +594,88 @@ p.custom-p{
     border: 2px solid #564FFF;
     border-radius: 15px;
     margin-bottom: 15px;
+}
+
+@media (max-width: 375px) {
+    .custom-testomonials .columns-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .custom-testomonials .columns-container .first {
+        width: 100%;
+    }
+
+    .custom-testomonials .columns-container .middle {
+        width: 100%;
+    }
+     h2.custom-heading {
+        font: normal normal bold 34px/46px Ubuntu;
+    }
+    p.custom-p{
+        font: normal normal normal 17px/24px Ubuntu;
+    }
+}
+
+.mobile-instructor{
+    background: #564FFF;
+    color: #fff;
+    text-align: center;
+    border-radius: 20px;
+    padding: 30px;
+}
+@media (width: 1440px) {
+    .mobile-instructor {
+        display: none;
+    }
+}
+@media (width: 1024px) {
+    .mobile-instructor {
+        display: none;
+    }
+}
+@media (width: 768px) {
+    .mobile-instructor {
+        display: block;
+    }
+
+    .become-instructor {
+        display: none;
+    }
+}
+@media (width: 320px) {
+    .mobile-instructor {
+        display: block;
+    }
+    .form--search button {
+        width: 93px;
+    }
+
+    .become-instructor {
+        display: none;
+    }
+}
+@media (width: 375px) {
+    .mobile-instructor {
+        display: block;
+    }
+
+    .become-instructor {
+        display: none;
+    }
+    .form--search button {
+        width: 93px;
+    }
+}
+@media (width: 425px) {
+    .mobile-instructor {
+        display: block;
+    }
+    .form--search button {
+        width: 93px;
+    }
+
+    .become-instructor {
+        display: none;
+    }
 }
