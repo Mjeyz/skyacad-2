@@ -17,6 +17,7 @@
                 <span class="badge badge-primary">{{ trans('webinars.'.$webinar->type) }}</span>
             @endif --}}
 
+
             <img src="{{ $webinar->getImage() }}" class="img-cover" alt="{{ $webinar->title }}">
 
             @if($webinar->type == 'webinar')
@@ -24,9 +25,9 @@
                     <span class="progress-bar" style="width: {{ $webinar->getProgress() }}%"></span>
                 </div> --}}
 
-                <a href="{{ $webinar->addToCalendarLink() }}" target="_blank" class="webinar-notify d-flex align-items-center justify-content-center">
+                {{-- <a href="{{ $webinar->addToCalendarLink() }}" target="_blank" class="webinar-notify d-flex align-items-center justify-content-center">
                     <i data-feather="bell" width="20" height="20" class="webinar-icon"></i>
-                </a>
+                </a> --}}
             @endif
         </div>
 
@@ -39,14 +40,14 @@
             </div> --}}
 
             @if(!empty($webinar->category))
-                <span class="d-block font-14 mt-10">{{ trans('public.in') }} <a href="{{ $webinar->category->getUrl() }}" target="_blank" class="home-course-category">{{ $webinar->category->title }}</a></span>
+                <span class="d-block font-14 mt-10"><a href="{{ $webinar->category->getUrl() }}" target="_blank" class="home-course-category">{{ $webinar->category->title }}</a></span>
             @endif
 
             <a href="{{ $webinar->getUrl() }}">
-                <h3 class="mt-0 webinar-title home-course-title">{{ $webinar->title }}</h3>
+                <h3 class="mt-10 webinar-title home-course-title">{{ $webinar->title }}</h3>
             </a>
             
-            <div class="webinar-price-box home-course-price">
+            <div class="webinar-price-box home-course-price" style="margin-top: -5px">
                 @if(!empty($webinar->price) and $webinar->price > 0)
                     @if($webinar->bestTicket() < $webinar->price)
                         <span class="real">{{ $currency }}{{ number_format($webinar->bestTicket(),2) }}</span>
@@ -58,7 +59,7 @@
                     <span class="real font-14">{{ trans('public.free') }}</span>
                 @endif
             </div>
-            <p> {{trans('home.course_description')}} </p>
+            <p class="pt-10"> {{trans('home.course_description')}} </p>
             <a href="{{ $webinar->getUrl() }}" class="btn btn-primary course-button mt-20">Enroll now</a>
 
             {{-- @include(getTemplate() . '.includes.webinar.rate',['rate' => $webinar->getRate()]) --}}
