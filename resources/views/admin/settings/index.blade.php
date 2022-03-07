@@ -18,7 +18,7 @@
             </p>
 
             <div class="row">
-                                    <div class="col-lg-6">
+                                    {{-- <div class="col-lg-6">
                         <div class="card card-large-icons">
                             <div class="card-icon bg-primary text-white">
                                 <i class="fas fa-cog"></i>
@@ -29,7 +29,7 @@
                                 <a href="/admin/settings/general" class="card-cta">Change Settings<i class="fas fa-chevron-right"></i></a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 
                     <div class="col-lg-6">
                         <div class="card card-large-icons">
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                 
-                    <div class="col-lg-6">
+                    {{-- <div class="col-lg-6">
                         <div class="card card-large-icons">
                             <div class="card-icon bg-primary text-white">
                                 <i class="fas fa-wrench"></i>
@@ -55,7 +55,7 @@
                                 <a href="/admin/settings/personalization" class="card-cta">Change Settings<i class="fas fa-chevron-right"></i></a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 
                                     <div class="col-lg-6">
                         <div class="card card-large-icons">
