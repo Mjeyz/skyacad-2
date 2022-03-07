@@ -47,7 +47,6 @@
                                             {{ trans('public.add_to_cart') }}
                                         @endif
                                     </button>
-
                                     @if($canSale and $course->subscribe)
                                         <a href="{{ $canSale ? '/subscribes/apply/'. $course->slug : '#' }}" class="btn btn-outline-primary btn-subscribe mt-20 @if(!$canSale) disabled @endif">{{ trans('public.subscribe') }}</a>
                                     @endif
@@ -59,6 +58,9 @@
                 </form>
                         
                     </div>
+                </div>
+                <div class="cart-button-go mt-30">
+                    <a href="/cart" id="reveal" class="btn btn-primary btn-lg btn-block">Go to cart</a>
                 </div>
             </div>
             <div class="col-md-8">
@@ -138,8 +140,6 @@
                         @if(!empty($course->category))
                             <span class="d-block font-14 mt-10 pb-10">{{ trans('public.in') }} <a href="{{ $course->category->getUrl() }}" target="_blank" class="home-course-category">{{ $course->category->title }}</a></span>
                         @endif
-                        <script>
-                        </script>
                         <h3>{{ $course->title }}</h3>
                         @if($course->price > 0)
                                     <span id="realPrice" data-value="{{ $course->price }}"
@@ -151,34 +151,6 @@
                                     <span style="pb-10 font-size: 20px" class="text-primary">{{ trans('public.free') }}</span>
                             @endif
                         <p> {{trans('public.course_card_desc')}} </p>
-                        <form action="/cart/store" method="post">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="webinar_id" value="{{ $course->id }}">
-                            @php
-                                $userHasBought = $course->checkUserHasBought();
-                                $canSale = ($course->canSale() and !$userHasBought);
-                            @endphp
-
-                            <div class="mt-20 d-flex flex-column">
-                                @if($course->price > 0)
-                                    <button type="{{ $canSale ? 'submit' : 'button' }}" @if(!$canSale) disabled @endif class="btn btn-primary course-card-button" onclick="cartButtonReveal()">
-                                        @if($userHasBought)
-                                            {{ trans('panel.purchased') }}
-                                        @else
-                                            {{ trans('public.add_to_cart') }}
-                                        @endif
-                                    </button>
-
-                                    @if($canSale and $course->subscribe)
-                                        <a href="{{ $canSale ? '/subscribes/apply/'. $course->slug : '#' }}" class="btn btn-outline-primary btn-subscribe mt-20 @if(!$canSale) disabled @endif">{{ trans('public.subscribe') }}</a>
-                                    @endif
-                                @else
-                                    <a href="{{ $canSale ? '/course/'. $course->slug .'/free' : '#' }}" class="btn btn-primary course-card-button @if(!$canSale) disabled @endif">{{ trans('public.enroll_on_webinar') }}</a>
-                                @endif
-                            </div>
-
-                </form>
-                        
                     </div>
                 </div>
                 <style>
@@ -186,9 +158,7 @@
                         display: none
                     }
                 </style>
-                <div class="cart-button-go">
-                    <a href="#" id="reveal" class="btn btn-primary">Let's go to the mars</a>
-                </div>
+                
             </div>
             <div class="col-md-4">
                 <div class="course-card-buy-page">

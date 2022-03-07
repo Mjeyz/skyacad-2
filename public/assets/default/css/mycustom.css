@@ -500,3 +500,96 @@ p.custom-p{
     letter-spacing: 0px;
     color: #564FFF;
 }
+.cart-page-inpuit{
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 4px 64px #13173d14;
+        border-radius: 20px 0 0 20px;
+        height: 50px;
+}
+.cart-page-buttonr{
+        height: 50px;
+        background: #564FFF 0% 0% no-repeat padding-box;
+        border-radius: 0px 20px 20px 0px;
+        font: normal normal bold 15px/29px Ubuntu;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        width: 149px;
+        border: none;
+}
+.custom-cart-input{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 4px 64px #13173D14;
+    border-radius: 20px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+.cart-payment-flex{
+    display: flex;
+}
+.cart-payment-heading{
+    font: normal normal bold 30px/35px Ubuntu;
+    letter-spacing: 0px;
+    color: #000000;
+}
+.cart-payment-price{
+    font: normal normal bold 20px/24px Ubuntu;
+    letter-spacing: 0px;
+    color: #564FFF;
+    paddin-bottom: 20px;
+}
+.cart-page-padding{
+    padding-left: 60px;
+}
+.custom-testomonials {
+    background: rgba(0, 0, 0, 0.05);
+    text-align: center;
+    padding: 5% 0;
+}
+
+.custom-testomonials h3 {
+    font-weight: bold;
+}
+
+.custom-testomonials .desc {
+    font-weight: bold;
+}
+
+.custom-testomonials .columns-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.custom-testomonials .columns-container .first {
+    width: 25%;
+}
+
+.custom-testomonials .columns-container .middle {
+    width: 35%;
+}
+
+.custom-testomonials .columns-container .column-boxes .box {
+    text-align: start;
+    background: #FFFFFF;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.custom-testomonials .columns-container .column-boxes .box p {
+    font-size: 15px;
+}
+
+.custom-testomonials .columns-container .column-boxes .box h6 {
+    font-weight: 600;
+}
+
+.custom-testomonials .columns-container .column-boxes .box i {
+    font-size: 30px;
+    padding: 10px;
+    color: #564FFF;
+    border: 2px solid #564FFF;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
