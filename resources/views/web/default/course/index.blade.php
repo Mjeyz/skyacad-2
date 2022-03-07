@@ -15,7 +15,7 @@
                     <img src="{{ $course->getImage() }}" alt="">
                     <div class="text-data">
                         @if(!empty($course->category))
-                            <span class="d-block font-14 mt-10 pb-10">{{ trans('public.in') }} <a href="{{ $course->category->getUrl() }}" target="_blank" class="home-course-category">{{ $course->category->title }}</a></span>
+                            <span class="d-block font-14 mt-10 pb-10"> <a href="{{ $course->category->getUrl() }}" target="_blank" class="home-course-category">{{ $course->category->title }}</a></span>
                         @endif
                         <script>
                         </script>
@@ -47,9 +47,7 @@
                                             {{ trans('public.add_to_cart') }}
                                         @endif
                                     </button>
-                                    @if($canSale and $course->subscribe)
-                                        <a href="{{ $canSale ? '/subscribes/apply/'. $course->slug : '#' }}" class="btn btn-outline-primary btn-subscribe mt-20 @if(!$canSale) disabled @endif">{{ trans('public.subscribe') }}</a>
-                                    @endif
+                                    {{--  --}}
                                 @else
                                     <a href="{{ $canSale ? '/course/'. $course->slug .'/free' : '#' }}" class="btn btn-primary course-card-button @if(!$canSale) disabled @endif">{{ trans('public.enroll_on_webinar') }}</a>
                                 @endif
@@ -65,7 +63,7 @@
             </div>
             <div class="col-md-8">
                  @if(!empty($course->category))
-                    <span class="d-block course-buy-page-rating mt-10 pb-10">{{ trans('public.in') }} <a href="{{ $course->category->getUrl() }}" target="_blank" class="home-course-category">{{ $course->category->title }}</a></span>
+                    <span class="d-block course-buy-page-rating mt-10 pb-10"> <a href="{{ $course->category->getUrl() }}" target="_blank" class="home-course-category">{{ $course->category->title }}</a></span>
                 @endif
                 <h3 class="course-buy-page-heading">{{ $course->title }}</h3>
                 @if($course->price > 0)
@@ -138,7 +136,7 @@
                     <img src="{{ $course->getImage() }}" alt="">
                     <div class="text-data">
                         @if(!empty($course->category))
-                            <span class="d-block font-14 mt-10 pb-10">{{ trans('public.in') }} <a href="{{ $course->category->getUrl() }}" target="_blank" class="home-course-category">{{ $course->category->title }}</a></span>
+                            <span class="d-block font-14 mt-10 pb-10"> <a href="{{ $course->category->getUrl() }}" target="_blank" class="home-course-category">{{ $course->category->title }}</a></span>
                         @endif
                         <h3>{{ $course->title }}</h3>
                         @if($course->price > 0)
@@ -151,6 +149,23 @@
                                     <span style="pb-10 font-size: 20px" class="text-primary">{{ trans('public.free') }}</span>
                             @endif
                         <p> {{trans('public.course_card_desc')}} </p>
+                        <div class="mt-20 d-flex flex-column">
+                            @if($course->price > 0)
+                                <button type="{{ $canSale ? 'submit' : 'button' }}" @if(!$canSale) disabled @endif class="btn btn-primary course-card-button">
+                                    @if($userHasBought)
+                                        {{ trans('panel.purchased') }}
+                                    @else
+                                        {{ trans('public.add_to_cart') }}
+                                    @endif
+                                </button>
+
+                                @if($canSale and $course->subscribe)
+                                    <a href="{{ $canSale ? '/subscribes/apply/'. $course->slug : '#' }}" class="btn btn-outline-primary btn-subscribe mt-20 @if(!$canSale) disabled @endif">{{ trans('public.subscribe') }}</a>
+                                @endif
+                            @else
+                                <a href="{{ $canSale ? '/course/'. $course->slug .'/free' : '#' }}" class="btn btn-primary course-card-button @if(!$canSale) disabled @endif">{{ trans('public.enroll_on_webinar') }}</a>
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <style>
@@ -165,7 +180,7 @@
                     <img src="{{ $course->getImage() }}" alt="">
                     <div class="text-data">
                         @if(!empty($course->category))
-                            <span class="d-block font-14 mt-10 pb-10">{{ trans('public.in') }} <a href="{{ $course->category->getUrl() }}" target="_blank" class="home-course-category">{{ $course->category->title }}</a></span>
+                            <span class="d-block font-14 mt-10 pb-10"> <a href="{{ $course->category->getUrl() }}" target="_blank" class="home-course-category">{{ $course->category->title }}</a></span>
                         @endif
                         <script>
                         </script>
@@ -198,9 +213,9 @@
                                         @endif
                                     </button>
 
-                                    @if($canSale and $course->subscribe)
+                                    {{-- @if($canSale and $course->subscribe)
                                         <a href="{{ $canSale ? '/subscribes/apply/'. $course->slug : '#' }}" class="btn btn-outline-primary btn-subscribe mt-20 @if(!$canSale) disabled @endif">{{ trans('public.subscribe') }}</a>
-                                    @endif
+                                    @endif --}}
                                 @else
                                     <a href="{{ $canSale ? '/course/'. $course->slug .'/free' : '#' }}" class="btn btn-primary course-card-button @if(!$canSale) disabled @endif">{{ trans('public.enroll_on_webinar') }}</a>
                                 @endif
@@ -216,7 +231,7 @@
                     <img src="{{ $course->getImage() }}" alt="">
                     <div class="text-data">
                         @if(!empty($course->category))
-                            <span class="d-block font-14 mt-10 pb-10">{{ trans('public.in') }} <a href="{{ $course->category->getUrl() }}" target="_blank" class="home-course-category">{{ $course->category->title }}</a></span>
+                            <span class="d-block font-14 mt-10 pb-10"> <a href="{{ $course->category->getUrl() }}" target="_blank" class="home-course-category">{{ $course->category->title }}</a></span>
                         @endif
                         <script>
                         </script>
@@ -249,9 +264,9 @@
                                         @endif
                                     </button>
 
-                                    @if($canSale and $course->subscribe)
+                                    {{-- @if($canSale and $course->subscribe)
                                         <a href="{{ $canSale ? '/subscribes/apply/'. $course->slug : '#' }}" class="btn btn-outline-primary btn-subscribe mt-20 @if(!$canSale) disabled @endif">{{ trans('public.subscribe') }}</a>
-                                    @endif
+                                    @endif --}}
                                 @else
                                     <a href="{{ $canSale ? '/course/'. $course->slug .'/free' : '#' }}" class="btn btn-primary course-card-button @if(!$canSale) disabled @endif">{{ trans('public.enroll_on_webinar') }}</a>
                                 @endif
@@ -290,7 +305,7 @@
                         <h1 class="font-30 course-title">
                             {{ $course->title }}
                         </h1>
-                        <span class="d-block font-16 mt-10">{{ trans('public.in') }} <a href="{{ $course->category->getUrl() }}" target="_blank" class="font-weight-500 text-decoration-underline text-white">{{ $course->category->title }}</a></span>
+                        <span class="d-block font-16 mt-10"> <a href="{{ $course->category->getUrl() }}" target="_blank" class="font-weight-500 text-decoration-underline text-white">{{ $course->category->title }}</a></span>
 
                         <div class="d-flex align-items-center">
                             @include('web.default.includes.webinar.rate',['rate' => $course->getRate()])
