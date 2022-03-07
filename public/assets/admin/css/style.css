@@ -118,7 +118,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 }
 
 .text-secondary, .text-secondary-all *, .text-secondary-all *:before, .text-secondary-all *:after {
-    color: #cdd3d8 !important;
+    color: #000000 !important;
 }
 
 .text-success, .text-success-all *, .text-success-all *:before, .text-success-all *:after {
@@ -126,7 +126,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 }
 
 .text-info, .text-info-all *, .text-info-all *:before, .text-info-all *:after {
-    color: #3abaf4 !important;
+    color: #6777ef !important;
 }
 
 .text-warning, .text-warning-all *, .text-warning-all *:before, .text-warning-all *:after {
