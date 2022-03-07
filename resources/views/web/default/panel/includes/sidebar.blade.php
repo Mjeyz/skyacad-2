@@ -188,38 +188,7 @@
             </div>
         </li>
 
-        <li class="sidenav-item {{ (request()->is('panel/quizzes') or request()->is('panel/quizzes/*')) ? 'sidenav-item-active' : '' }}">
-            <a class="d-flex align-items-center" data-toggle="collapse" href="#quizzesCollapse" role="button" aria-expanded="false" aria-controls="quizzesCollapse">
-                <span class="sidenav-item-icon mr-10">
-                    @include('web.default.panel.includes.sidebar_icons.quizzes')
-                </span>
-                <span class="font-14 text-dark-blue font-weight-500">{{ trans('panel.quizzes') }}</span>
-            </a>
-
-            <div class="collapse {{ (request()->is('panel/quizzes') or request()->is('panel/quizzes/*')) ? 'show' : '' }}" id="quizzesCollapse">
-                <ul class="sidenav-item-collapse">
-                    @if($authUser->isOrganization() || $authUser->isTeacher())
-                        <li class="mt-5 {{ (request()->is('panel/quizzes/new')) ? 'active' : '' }}">
-                            <a href="/panel/quizzes/new">{{ trans('quiz.new_quiz') }}</a>
-                        </li>
-                        <li class="mt-5 {{ (request()->is('panel/quizzes')) ? 'active' : '' }}">
-                            <a href="/panel/quizzes">{{ trans('public.list') }}</a>
-                        </li>
-                        <li class="mt-5 {{ (request()->is('panel/quizzes/results')) ? 'active' : '' }}">
-                            <a href="/panel/quizzes/results">{{ trans('public.results') }}</a>
-                        </li>
-                    @endif
-
-                    <li class="mt-5 {{ (request()->is('panel/quizzes/my-results')) ? 'active' : '' }}">
-                        <a href="/panel/quizzes/my-results">{{ trans('public.my_results') }}</a>
-                    </li>
-
-                    <li class="mt-5 {{ (request()->is('panel/quizzes/opens')) ? 'active' : '' }}">
-                        <a href="/panel/quizzes/opens">{{ trans('public.not_participated') }}</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+        
 
         <li class="sidenav-item {{ (request()->is('panel/certificates') or request()->is('panel/certificates/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#certificatesCollapse" role="button" aria-expanded="false" aria-controls="certificatesCollapse">
@@ -394,11 +363,4 @@
         $getPanelSidebarSettings = getPanelSidebarSettings();
     @endphp
 
-    @if(!empty($getPanelSidebarSettings))
-        <div class="sidebar-create-class d-none d-md-block">
-            <a href="{{ !empty($getPanelSidebarSettings['link']) ? $getPanelSidebarSettings['link'] : '' }}" class="sidebar-create-class-btn d-block text-right p-5">
-                <img src="{{ !empty($getPanelSidebarSettings['background']) ? $getPanelSidebarSettings['background'] : '' }}" alt="">
-            </a>
-        </div>
-    @endif
 </div>

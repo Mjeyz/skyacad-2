@@ -223,16 +223,49 @@
         </section>
   </div>
 
-
+<div class="custom-testomonials mt-45">
+    <h2 class="custom-heading">What our trainer says</h2>
+    <p class="custom-p">Find what our student say about us</p>
+    <p>&nbsp;</p>
+    <div class="columns-container">
+      <div class="column-boxes first">
+        <div class="box">
+          <i class="fa-regular fa-comment-dots"></i>
+          <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz,</p>
+          <h6>Abdullah mohammed</h6>
+        </div>
+        <div class="box">
+          <i class="fa-regular fa-comment-dots"></i>
+          <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy.</p>
+          <h6>Abdullah mohammed</h6>
+        </div>
+      </div>
+      <div class="column-boxes middle">
+        <div class="box">
+          <i class="fa-regular fa-comment-dots"></i>
+          <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump.</p>
+          <p>&nbsp;</p>
+          <h6>Abdullah mohammed</h6>
+        </div>
+        <div class="box">
+          <i class="fa-regular fa-comment-dots"></i>
+          <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz.</p>
+          <h6>Abdullah mohammed</h6>
+        </div>
+      </div>
+      <div class="column-boxes first">
+        <div class="box">
+          <i class="fa-regular fa-comment-dots"></i>
+          <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump.The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump.The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex!</p>
+          <h6>Abdullah mohammed</h6>
+        </div>
+      </div>
+    </div>
+  </div>
     
 
-    @if(!empty($testimonials) and !$testimonials->isEmpty())
+    {{-- @if(!empty($testimonials) and !$testimonials->isEmpty())
         <div class="position-relative testimonials-container">
-
-            <div id="parallax1" class="ltr">
-                <div data-depth="0.2" class="gradient-box left-gradient-box"></div>
-            </div>
-
             <section class="container home-sections home-sections-swiper">
                 <div class="text-center">
                     <h2 class="section-title">{{ trans('home.testimonials') }}</h2>
@@ -242,27 +275,21 @@
                 <div class="position-relative">
                     <div class="swiper-container testimonials-swiper px-12">
                         <div class="swiper-wrapper">
-
                             @foreach($testimonials as $testimonial)
                                 <div class="swiper-slide">
-                                    <div class="testimonials-card position-relative py-15 py-lg-30 px-10 px-lg-20 rounded-sm shadow bg-white text-center">
-                                        <div class="d-flex flex-column align-items-center">
-                                            <div class="testimonials-user-avatar">
-                                                <img src="{{ $testimonial->user_avatar }}" alt="{{ $testimonial->user_name }}" class="img-cover rounded-circle">
-                                            </div>
+                                    <div class="">
+                                        <div class="">
+                                            
+                                            <i class="fa-regular fa-comment-dots"></i>
+                                            <p class="mt-25 text-gray font-14">{!! nl2br($testimonial->comment) !!}</p>
                                             <h4 class="font-16 font-weight-bold text-secondary mt-30">{{ $testimonial->user_name }}</h4>
                                             <span class="d-block font-14 text-gray">{{ $testimonial->user_bio }}</span>
                                             @include('web.default.includes.webinar.rate',['rate' => $testimonial->rate, 'dontShowRate' => true])
                                         </div>
-
-                                        <p class="mt-25 text-gray font-14">{!! nl2br($testimonial->comment) !!}</p>
-
-                                        <div class="bottom-gradient"></div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
-
                     </div>
 
                     <div class="d-flex justify-content-center">
@@ -270,16 +297,8 @@
                     </div>
                 </div>
             </section>
-
-            <div id="parallax2" class="ltr">
-                <div data-depth="0.4" class="gradient-box right-gradient-box"></div>
-            </div>
-
-            <div id="parallax3" class="ltr">
-                <div data-depth="0.8" class="gradient-box bottom-gradient-box"></div>
-            </div>
         </div>
-    @endif
+    @endif --}}
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
