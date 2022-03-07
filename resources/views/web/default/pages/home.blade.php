@@ -27,7 +27,7 @@
                 @if($heroSection == "2")
                     <div class="row slider-content align-items-center hero-section2 flex-column-reverse flex-md-row">
                         <div class="col-12 col-md-7 col-lg-6">
-                            <h1 class="text-secondary font-weight-bold">{{ $heroSectionData['title'] }}</h1>
+                            <h1 style="color: #000" class="font-weight-bold">{{ $heroSectionData['title'] }}</h1>
                             <p class="slide-hint text-gray mt-20">{!! nl2br($heroSectionData['description']) !!}</p>
 
                             {{-- <form action="/search" method="get" class="d-inline-flex mt-30 mt-lg-30 w-100">
@@ -112,7 +112,16 @@
                     <p class="custom-p">{{ trans('home.latest_webinars_hint') }}</p>
                 </div>
             </div>
-
+            <style>
+                .swiper-container{
+                    width: 80%;
+                }
+                @media (max-width: 320px) {
+                    .swiper-container {
+                        width: 100%;
+                    }
+                }
+            </style>
             <div class="mt-10 position-relative">
                 <div class="swiper-container latest-webinars-swiper px-12">
                     <div class="swiper-wrapper py-20">
@@ -149,7 +158,14 @@
     </div>
     </div>
   </div>
+  <div class="container">
 
+    <div class="mobile-instructor">
+        <h2 style="color: #fff;" class="custom-heading">Become Instructor</h2>
+        <p>Register now and be our team fill the form and we will contact you.</p>
+        <a href="/login" class="btn btn-primary heroButton bcm-instructor">Register</a>
+    </div>
+  </div>
   <div class="container" style="
     display: flex;
     align-items: center;
