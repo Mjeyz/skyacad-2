@@ -18348,9 +18348,9 @@ p {
 .webinar-card {
     position: relative;
     border-radius: 15px;
-    box-shadow: 0 5px 12px 0 rgba(0, 0, 0, .1);
     background-color: #fff;
-    transition: all .5s ease
+    transition: all .5s ease;
+    border: 0.5px solid #707070;
 }
 
 .webinar-card .image-box {
@@ -18617,9 +18617,10 @@ p {
 }
 
 .webinar-card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .1);
-    transition: all .5s ease
+    /* transform: translateY(-15px); */
+    box-shadow: 0px 4px 64px #13173D14;
+    transition: all .5s ease;
+    border: none;
 }
 
 .webinar-card .webinar-icon {
