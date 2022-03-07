@@ -159,9 +159,9 @@
                                     @endif
                                 </button>
 
-                                @if($canSale and $course->subscribe)
+                                {{-- @if($canSale and $course->subscribe)
                                     <a href="{{ $canSale ? '/subscribes/apply/'. $course->slug : '#' }}" class="btn btn-outline-primary btn-subscribe mt-20 @if(!$canSale) disabled @endif">{{ trans('public.subscribe') }}</a>
-                                @endif
+                                @endif --}}
                             @else
                                 <a href="{{ $canSale ? '/course/'. $course->slug .'/free' : '#' }}" class="btn btn-primary course-card-button @if(!$canSale) disabled @endif">{{ trans('public.enroll_on_webinar') }}</a>
                             @endif
