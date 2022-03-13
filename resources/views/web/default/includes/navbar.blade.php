@@ -19,7 +19,7 @@
             </button> --}}
             <form action="/search" method="get">
                 <div class="header-search">
-                    <input type="search" placeholder="Search">
+                    <input type="search" name="search" placeholder="Search" value="{{ request()->get('search','') }}">
                     <i class="fa fa-search"></i>
                 </div>
             </form>

@@ -658,17 +658,17 @@ input.my-custom-input{
     width: 200px;
     border-radius: 50%;
 }
-@media (width: 1440px) {
+@media (max-width: 1440px) {
     .mobile-instructor {
         display: none;
     }
 }
-@media (width: 1024px) {
+@media (max-width: 1024px) {
     .mobile-instructor {
         display: none;
     }
 }
-@media (width: 768px) {
+@media (max-width: 768px) {
     .mobile-instructor {
         display: block;
     }
@@ -677,7 +677,7 @@ input.my-custom-input{
         display: none;
     }
 }
-@media (width: 320px) {
+@media (max-width: 320px) {
     .mobile-instructor {
         display: block;
     }
@@ -689,7 +689,7 @@ input.my-custom-input{
         display: none;
     }
 }
-@media (width: 375px) {
+@media (max-width: 375px) {
     .mobile-instructor {
         display: block;
     }
@@ -701,7 +701,7 @@ input.my-custom-input{
         width: 93px;
     }
 }
-@media (width: 425px) {
+@media (max-width: 425px) {
     .mobile-instructor {
         display: block;
     }
