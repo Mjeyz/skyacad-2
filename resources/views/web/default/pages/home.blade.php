@@ -319,18 +319,28 @@
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <div class="newslatter-home-section container">
-        <i class="fa-regular fa-comment-dots"></i>
-        <h2 class="custom-heading">Subscribe to our newsletter</h2>
-        <p class="custom-p">Subscribe with our newsletter for a free courses</p>
-        <form class="form form--search" action="/newsletters">
-            <div class="form__field">
-                <input type="text" name="newsletter_email" class="@error('newsletter_email') is-invalid @enderror" placeholder="{{ trans('footer.enter_email_here') }}"/>
-                @error('newsletter_email')
-                <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-                <button type="submit" class="button-primary">Subscribe</button>
+        <div class="d-flex flex-column">
+            <div class="p-2 text-container pb-30">
+                <i class="fa-regular fa-comment-dots"></i>
+                <h2 class="custom-heading">{{trans('Subscribe to our newsletter')}}</h2>
+                <p class="custom-p">{{trans('Subscribe with our newsletter for a free courses')}}</p>
             </div>
-        </form>
+            <div class="subscribe-input bg-white p-2 flex-grow-1 mt-30 mt-md-0" style="background: #FFFFFF 0% 0% no-repeat padding-box; box-shadow: 0px 4px 64px #13173D14;border-radius: 20px;">
+                <form action="/newsletters" method="post">
+                    {{ csrf_field() }}
+
+                    <div class="form-group d-flex align-items-center m-0">
+                        <div class="w-100">
+                            <input type="text" name="newsletter_email" class="form-control border-0 @error('newsletter_email') is-invalid @enderror" placeholder="{{ trans('footer.enter_email_here') }}"/>
+                            @error('newsletter_email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="border-radius: 0 15px 15px 0">{{ trans('footer.join') }}</button>
+                    </div>
+                </form>
+            </div>
+        </div> 
   </div>
 
 @endsection
