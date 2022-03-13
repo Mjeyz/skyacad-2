@@ -1,3 +1,18 @@
+<div class="custom-menu-bar">
+        <a href="/panel/setting">
+            <div class="custom-menu">
+                <img src="/assets/default/img/profile.png" alt="">
+                <span>{{trans('Profile')}}</span>
+            </div>
+        </a>
+        <a href="/panel/financial/summary">
+            <div class="custom-menu">
+                <img src="/assets/default/img/invoice.png" alt="">
+                <span>{{trans('Invoices')}}</span>
+            </div>
+        </a>
+</div>
+{{--  
 <div class="xs-panel-nav d-flex d-lg-none justify-content-between py-5 px-15">
     <div class="user-info d-flex align-items-center justify-content-between">
         <div class="user-avatar">
@@ -364,3 +379,4 @@
     @endphp
 
 </div>
+--}}
