@@ -1,9 +1,9 @@
 @extends(getTemplate() .'.panel.layouts.panel_layout')
 
 @section('content')
-    {{-- @if(empty($new_user))
+    @if(empty($new_user))
         @include('web.default.panel.setting.setting_includes.progress')
-    @endif --}}
+    @endif
 
     <form method="post" id="userSettingForm" class="mt-30" action="{{ (!empty($new_user)) ? '/panel/manage/'. $user_type .'/new' : '/panel/setting' }}">
         {{ csrf_field() }}
@@ -19,7 +19,7 @@
             @include('web.default.panel.setting.setting_includes.basic_information')
         @endif
 
-        {{-- @if(empty($new_user) and !empty($currentStep))
+        @if(empty($new_user) and !empty($currentStep))
             @switch($currentStep)
                 @case(2)
                 @include('web.default.panel.setting.setting_includes.image')
@@ -53,11 +53,11 @@
                 @endif
                 @break
             @endswitch
-        @endif --}}
+        @endif
     </form>
-<div class="row justify-content-center">
-    <div class="create-webinar-footer row col-12 col-lg-6">
-        {{-- <div class="">
+
+    <div class="create-webinar-footer d-flex align-items-center justify-content-between mt-20 pt-15 border-top">
+        <div class="">
             @if(!empty($user))
                 @if(!empty($currentStep) and $currentStep > 1)
                     <a href="/panel/setting/step/{{ ($currentStep - 1) }}" class="btn btn-sm btn-primary">{{ trans('webinars.previous') }}</a>
@@ -67,12 +67,10 @@
 
                 <button type="button" id="getNextStep" class="btn btn-sm btn-primary ml-15" @if(!empty($currentStep) and $currentStep == 8) disabled @endif>{{ trans('webinars.next') }}</button>
             @endif
-        </div> --}}
+        </div>
 
-        <button type="button" id="saveData" class="btn btn-primary btn-lg btn-block">{{ trans('public.save') }}</button>
+        <button type="button" id="saveData" class="btn btn-sm btn-primary ml-15">{{ trans('public.save') }}</button>
     </div>
-</div>
-    
 @endsection
 
 @push('scripts_bottom')
