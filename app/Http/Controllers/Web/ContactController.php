@@ -35,7 +35,7 @@ class ContactController extends Controller
             'phone' => 'required|numeric',
             'subject' => 'required|string',
             'message' => 'required|string',
-            'captcha' => 'required|captcha',
+            // 'captcha' => 'required|captcha',
         ]);
 
         $data = $request->all();
@@ -45,7 +45,7 @@ class ContactController extends Controller
         Contact::create($data);
 
         $notifyOptions = [
-            '[c.u.title]' => $data['subject'],
+            '[c.u.title]' => 'contact message',
             '[u.name]' => $data['name']
         ];
         sendNotification('new_contact_message', $notifyOptions, 1);

@@ -442,13 +442,13 @@ class UserController extends Controller
 
             if (empty($lastRequest)) {
                 $this->validate($request, [
-                    'occupations' => 'required',
+                    // 'occupations' => 'required',
                     'certificate' => 'nullable|string',
-                    'account_type' => 'required',
-                    'iban' => 'required',
-                    'account_id' => 'required',
-                    'identity_scan' => 'required',
-                    'description' => 'nullable|string',
+                    // 'account_type' => 'required',
+                    // 'iban' => 'required',
+                    // 'account_id' => 'required',
+                    // 'identity_scan' => 'required',
+                    // 'description' => 'nullable|string',
                 ]);
 
                 $data = $request->all();
@@ -456,15 +456,17 @@ class UserController extends Controller
                 BecomeInstructor::create([
                     'user_id' => $user->id,
                     'certificate' => $data['certificate'],
-                    'description' => $data['description'],
+                    // 'description' => $data['description'],
                     'created_at' => time()
                 ]);
 
                 $user->update([
-                    'account_type' => $data['account_type'],
-                    'iban' => $data['iban'],
-                    'account_id' => $data['account_id'],
-                    'identity_scan' => $data['identity_scan'],
+                    // 'account_type' => $data['account_type'],
+                    // 'iban' => $data['iban'],
+                    // 'account_id' => $data['account_id'],
+                    // 'identity_scan' => $data['identity_scan'],
+                    
+                    // 'description' => $data['description'],
                     'certificate' => $data['certificate'],
                 ]);
 

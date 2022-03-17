@@ -3826,7 +3826,7 @@ a.badge-gray200:focus {
     height: 2.5rem;
     padding: .5rem 1rem;
     font-family: 'Ubuntu', sans-serif;
-    font-size: .75rem;
+    font-size: 1rem;
     font-weight: 400;
     line-height: 1.25;
     color: #343434;
@@ -17384,7 +17384,7 @@ p {
 }
 
 .slider-container.slider-hero-section2 {
-    padding: 100px 0 150px
+    padding: 33px 0 150px
 }
 
 @media (max-width:991px) {
@@ -17428,10 +17428,15 @@ p {
 }
 
 .slider-container .slider-content .slider-search {
-    border-radius: 38px;
-    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, .1)
+    height: 54px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 50px #13173D1A;
 }
 
+.slider-container .slider-content .slider-search .fa-magnifying-glass {
+    padding-left: 20px;
+    font-size: 20px;
+}
 .slider-container .slider-content.hero-section2 h1 {
     font-size: 44px;
     line-height: 1.5;
@@ -18350,7 +18355,8 @@ p {
     border-radius: 15px;
     background-color: #fff;
     transition: all .5s ease;
-    border: 0.5px solid #707070;
+    box-shadow: 0px 4px 64px #13173D14;
+    /* border: 0.5px solid #707070; */
 }
 
 .webinar-card .image-box {
@@ -19906,4 +19912,23 @@ p {
 
 .quiz-form .question-multi-answers .answer-item input[type=radio]:checked+.answer-label .image-container:after {
     opacity: 1
+}
+.img-container img{
+    width: 100%;
+}
+.testmonial-box{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 4px 64px #13173D14;
+    border-radius: 20px;
+    padding: 30px;
+}
+.testmonial-box .fa-comment-dots {
+    font-size: 27px;
+    color: #564FFF;
+    padding: 10px;
+    border: 2px solid #564FFF;
+    border-radius: 15px;
+}
+.testmonial-box p{
+    text-align: justify;
 }

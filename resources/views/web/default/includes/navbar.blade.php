@@ -17,12 +17,12 @@
             {{-- <button class="navbar-toggler navbar-order" type="button" id="navbarToggle">
                 <span class="navbar-toggler-icon"></span>
             </button> --}}
-            <form action="/search" method="get">
+            {{-- <form action="/search" method="get">
                 <div class="header-search">
                     <input type="search" name="search" placeholder="Search" value="{{ request()->get('search','') }}">
                     <i class="fa fa-search"></i>
                 </div>
-            </form>
+            </form> --}}
             {{-- <div class="mx-lg-30 d-none d-lg-flex flex-grow-1 navbar-toggle-content " id="navbarContent">
                 <form action="/search" method="get" class="form-inline my-2 my-lg-0 navbar-search position-relative">
                     <input class="form-control mr-5 rounded" type="text" name="search" placeholder="{{ trans('navbar.search_anything') }}" aria-label="Search">

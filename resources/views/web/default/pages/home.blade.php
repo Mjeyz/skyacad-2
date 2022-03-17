@@ -30,13 +30,13 @@
                             <h1 style="color: #000" class="font-weight-bold">{{ $heroSectionData['title'] }}</h1>
                             <p class="slide-hint text-gray mt-20">{!! nl2br($heroSectionData['description']) !!}</p>
 
-                            {{-- <form action="/search" method="get" class="d-inline-flex mt-30 mt-lg-30 w-100">
-                                <div class="form-group d-flex align-items-center m-0 slider-search p-10 bg-white w-100">
-                                    <input type="text" name="search" class="form-control border-0 mr-lg-50" placeholder="{{ trans('home.slider_search_placeholder') }}"/>
-                                    <button type="submit" class="btn btn-primary rounded-pill">{{ trans('home.find') }}</button>
+                            <form action="/search" method="get" class="d-inline-flex mt-30 mt-lg-30 w-100">
+                                <div class="form-group d-flex align-items-center mt-45 slider-search p-10 bg-white w-100">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="text" name="search" class="form-control border-0 mr-lg-50" placeholder="{{ trans('Search courses…') }}"/>
                                 </div>
-                            </form> --}}
-                            <button class="btn btn-primary heroButton">Learn now</button>
+                            </form>
+                            {{-- <a href="/classes?sort=newest"><button class="btn btn-primary heroButton">{{trans('Learn now')}}</button></a> --}}
                         </div>
                         <div class="col-12 col-md-5 col-lg-6">
                             <img src="/assets/default/img/pilots.png" alt="{{ $heroSectionData['title'] }}" class="img-cover">
@@ -49,7 +49,7 @@
                             <div class="col-12 col-md-9 col-lg-7">
                                 <p class="mt-30 slide-hint">{!! nl2br($heroSectionData['description']) !!}</p>
 
-                                <form action="/search" method="get" class="d-inline-flex mt-30 mt-lg-50 w-100">
+                                <form action="/search" method="get" class="d-inline-flex mt-30 mt-lg-50 w-100 mb-lg-45">
                                     <div class="form-group d-flex align-items-center m-0 slider-search p-10 bg-white w-100">
                                         <input type="text" name="search" class="form-control border-0 mr-lg-50" placeholder="{{ trans('home.slider_search_placeholder') }}"/>
                                         <button type="submit" class="btn btn-primary rounded-pill">{{ trans('home.find') }}</button>
@@ -65,14 +65,13 @@
 
     <div class="container">
         <div class="academy-features">
-            <div class="titles text-center" style="margin-bottom: 20px">
                 <h2 class="custom-heading">Sky Academy Features</h2>
                 <p class="custom-p">What our academy features and what we look for in the future.</p>
-            </div>
+           
             <p>&nbsp;</p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
-            <div class="text-boxes">
+            <div class="text-boxes mt-30">
                     <div class="box">
                         <img src="/assets/default/img/icons/feature-icon-1.png" alt="">
                         <h6>Payment methods</h6>
@@ -94,8 +93,10 @@
             </div>
         </div>
     </div>
-    <div class="academy-partners text-center">
-        <h2 class="custom-heading" style="padding-bottom: 30px">Our Partners</h2>
+    <div class="academy-partners">
+        <div class="container">
+            <h2 class="custom-heading  mb-45">Our Partners</h2>
+        </div>
         <div class="row academy-clients-container">
             <div class=" client two columns"></div>
             <div class=" client two columns"></div>
@@ -107,7 +108,7 @@
 
     @if(!empty($latestWebinars) and !$latestWebinars->isEmpty())
         <section class="home-sections home-sections-swiper container">
-                <div class="text-center">
+                <div class="mb-40">
                     <h2 class="custom-heading">{{ trans('home.latest_classes') }}</h2>
                     <p class="custom-p">{{ trans('home.latest_webinars_hint') }}</p>
                 </div>
@@ -134,190 +135,115 @@
                     </div>
                 </div>
 <p>&nbsp;</p>
-                <div style="display: flex;align-items: center;justify-content: center;">
-                    
-                    <a href="/classes?sort=newest" class="btn btn-primary heroButton">{{ trans('home.view_all') }}</a>
+                <div class="container mt-45">
+                    <a href="/classes?sort=newest" class="btn btn-primary course-button">{{ trans('home.view_all') }}</a>
                 </div>
 <p>&nbsp;</p>
             </div>
         </section>
     @endif
   <div class="become-instructor">
-    <div class="text-container-mobile mobile-display">
-        <h3>Become Instructor</h3>
-        <p>Register now and be our team fill the form and we will contact you.</p>
-        <a href="/login" class="btn btn-primary heroButton bcm-instructor">Register</a>
-    </div>
-    <div class="layout-cont container">
-    <div class="img-container">
-        <div class="text-container desktop-display">
-            <h3>Become Instructor</h3>
-            <p>Register now and be our team fill the form and we will contact you.</p>
-            <a href="/login" class="btn btn-primary heroButton bcm-instructor">Register</a>
-        </div>
-    </div>
+    <div class="container">
+        <h2 class="custom-heading">Become Instructor</h2>
+        <p class="custom-p pt-10">Register now and be our team fill the form and we will contact you.</p>
+        <a href="/login" class="btn btn-primary bcm-instructor mt-40">Register</a>
     </div>
   </div>
-  <div class="container">
-
-    <div class="mobile-instructor">
-        <h2 style="color: #fff;" class="custom-heading">Become Instructor</h2>
-        <p>Register now and be our team fill the form and we will contact you.</p>
-        <a href="/login" class="btn btn-primary heroButton bcm-instructor">Register</a>
-    </div>
-  </div>
-  <div class="container" style="
-    display: flex;
-    align-items: center;
-    justify-content: center;
-">
-       <section class="mt-30 mt-md-50 text-center contact-us-homepage-section">
+    <section class="container mt-30 pb-45 mt-md-50 contact-us-homepage-section">
+        <div class="text-container mb-30">
             <h2 class="custom-heading">{{ trans('site.send_your_message_directly') }}</h2>
             <p class="custom-p">{{ trans('site.contact_subt') }}</p>
+        </div>
+        @if(!empty(session()->has('msg')))
+            <div class="alert alert-success my-25 d-flex align-items-center">
+                <i data-feather="check-square" width="50" height="50" class="mr-2"></i>
+                {{ session()->get('msg') }}
+            </div>
+        @endif
+        <div class="row mt-40">
+            <div class="img-container col-md-5">
+                <img src="/assets/default/img/HDR-featured-image-e1644397620392.png" alt="">
+            </div>
+            <div class="col-md-7">
+                    <form action="/contact/store" method="post" class="mt-20">
+                        {{ csrf_field() }}
+                        <div class="d-flex flex-column">
+                            <div class="">
+                                <div class="form-group p-2">
+                                    <input type="text" placeholder="{{ trans('site.your_name') }}" name="name" value="{{ old('name') }}" class="form-control @error('name')  is-invalid @enderror"/>
+                                    @error('name')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group p-2">
+                                    <input type="text" placeholder="{{ trans('public.email') }}" name="email" value="{{ old('email') }}" class="form-control @error('email')  is-invalid @enderror"/>
+                                    @error('email')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group p-2">
+                                    <input type="text" name="phone" placeholder="{{ trans('site.phone_number') }}" value="{{ old('phone') }}" class="form-control @error('phone')  is-invalid @enderror"/>
+                                    @error('phone')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group p-2" style="display: none" >
+                                    <input type="text" placeholder="{{ trans('site.subject') }}" name="subject" value="New message from contact us " class="form-control @error('subject')  is-invalid @enderror"/>
+                                    @error('subject')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group p-2">
+                                    <textarea style=" margin-top: -16px; " name="message" placeholder="{{ trans('Your message here') }}" id="" rows="9" class="form-control @error('message')  is-invalid @enderror">{{ old('message') }}</textarea>
+                                    @error('message')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                            <button type="submit" class="btn btn-primary">{{ trans('site.send_message') }}</button>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </section>
+  
 
-            @if(!empty(session()->has('msg')))
-                <div class="alert alert-success my-25 d-flex align-items-center">
-                    <i data-feather="check-square" width="50" height="50" class="mr-2"></i>
-                    {{ session()->get('msg') }}
+    <div class="custom-testomonials mt-45">
+        <div class="container">
+            <h2 class="custom-heading">What our trainer says</h2>
+            <p class="custom-p">Find what our student say about us</p>
+            <p>&nbsp;</p>
+        </div>
+        <div class="row">
+            <div class="swiper-container testimonials-swiper px-12">
+                <div class="swiper-wrapper">
+                    @foreach($testimonials as $testimonial)
+                        <div class="swiper-slide testmonial-box">
+                            <i class="fa-regular fa-comment-dots mb-20"></i>
+                            <h4 class="mb-10">{{ $testimonial->user_name }}</h4>
+                            {{-- <span>{{ $testimonial->user_bio }}</span> --}}
+                            <p>{!! nl2br($testimonial->comment) !!}</p>
+                            {{-- @include('web.default.includes.webinar.rate',['rate' => $testimonial->rate, 'dontShowRate' => true]) --}}
+                        </div>
+                    @endforeach
                 </div>
-            @endif
-
-            <form action="/contact/store" method="post" class="mt-20">
-                {{ csrf_field() }}
-
-                        <div class="form-group">
-                            <input type="text" name="name" placeholder="Name"  value="{{ old('name') }}" class="form-control @error('name')  is-invalid @enderror"/>
-                            @error('name')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="email" placeholder="Email address" value="{{ old('email') }}" class="form-control @error('email')  is-invalid @enderror"/>
-                            @error('email')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" name="phone" placeholder="Phone number" value="{{ old('phone') }}" class="form-control @error('phone')  is-invalid @enderror"/>
-                            @error('phone')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    {{-- <div class="col-12 col-md-6">
-                        <div class="form-group">
-                            <label class="input-label font-weight-500">{{ trans('site.subject') }}</label>
-                            <input type="text" name="subject" value="{{ old('subject') }}" class="form-control @error('subject')  is-invalid @enderror"/>
-                            @error('subject')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div> --}}
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="form-group">
-                            <textarea name="message" placeholder="Text here.." id="" rows="10" class="form-control @error('message')  is-invalid @enderror">{{ old('message') }}</textarea>
-                            @error('message')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-                    <button type="submit" style="width: 100%" class="btn btn-primary">{{ trans('site.send_message') }}</button>
-            </form>
-        </section>
-  </div>
-
-<div class="custom-testomonials mt-45">
-    <h2 class="custom-heading">What our trainer says</h2>
-    <p class="custom-p">Find what our student say about us</p>
-    <p>&nbsp;</p>
-    <div class="columns-container">
-      <div class="column-boxes first">
-        <div class="box">
-          <i class="fa-regular fa-comment-dots"></i>
-          <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz,</p>
-          <h6>Abdullah mohammed</h6>
+            </div>
         </div>
-        <div class="box">
-          <i class="fa-regular fa-comment-dots"></i>
-          <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy.</p>
-          <h6>Abdullah mohammed</h6>
-        </div>
-      </div>
-      <div class="column-boxes middle">
-        <div class="box">
-          <i class="fa-regular fa-comment-dots"></i>
-          <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump.</p>
-          <p>&nbsp;</p>
-          <h6>Abdullah mohammed</h6>
-        </div>
-        <div class="box">
-          <i class="fa-regular fa-comment-dots"></i>
-          <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz.</p>
-          <h6>Abdullah mohammed</h6>
-        </div>
-      </div>
-      <div class="column-boxes first">
-        <div class="box">
-          <i class="fa-regular fa-comment-dots"></i>
-          <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump.The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump.The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex!</p>
-          <h6>Abdullah mohammed</h6>
-        </div>
-      </div>
+        
     </div>
-  </div>
     
 
-    {{-- @if(!empty($testimonials) and !$testimonials->isEmpty())
-        <div class="position-relative testimonials-container">
-            <section class="container home-sections home-sections-swiper">
-                <div class="text-center">
-                    <h2 class="section-title">{{ trans('home.testimonials') }}</h2>
-                    <p class="section-hint">{{ trans('home.testimonials_hint') }}</p>
-                </div>
-
-                <div class="position-relative">
-                    <div class="swiper-container testimonials-swiper px-12">
-                        <div class="swiper-wrapper">
-                            @foreach($testimonials as $testimonial)
-                                <div class="swiper-slide">
-                                    <div class="">
-                                        <div class="">
-                                            
-                                            <i class="fa-regular fa-comment-dots"></i>
-                                            <p class="mt-25 text-gray font-14">{!! nl2br($testimonial->comment) !!}</p>
-                                            <h4 class="font-16 font-weight-bold text-secondary mt-30">{{ $testimonial->user_name }}</h4>
-                                            <span class="d-block font-14 text-gray">{{ $testimonial->user_bio }}</span>
-                                            @include('web.default.includes.webinar.rate',['rate' => $testimonial->rate, 'dontShowRate' => true])
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-
-                    <div class="d-flex justify-content-center">
-                        <div class="swiper-pagination testimonials-swiper-pagination"></div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    @endif --}}
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
+    
     <div class="newslatter-home-section container">
         <div class="d-flex flex-column">
             <div class="p-2 text-container pb-30">

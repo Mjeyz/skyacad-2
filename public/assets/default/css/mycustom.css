@@ -1,6 +1,6 @@
 .academy-features {
-    padding-bottom: 10%;
-    padding: 13% 0;
+    padding-bottom: 5%;
+    /* padding: 13% 0; */
 }
 .academy-features .text-boxes {
     display: flex;
@@ -151,30 +151,31 @@ p.custom-p{
 
 
 .bcm-instructor{
-    height: 65px;
-    width: 200px;
+    height: 50px;
+    width: 180px;
+    border-radius: 20px;
 }
-.bcm-instructor:hover, 
+/* .bcm-instructor:hover, 
 .bcm-instructor:active,
 .bcm-instructor:focus{
     color: #564FFF;
     background: #fff;
-}
+} */
 .become-instructor .mobile-display{
     display: none;
 }
 .contact-us-homepage-section{
-     width: 70%;   
  }
 
 .contact-us-homepage-section input{
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 4px 64px #13173d14;
     border-radius: 20px;
-    height: 56px;
+    height: 50px;
     font: normal normal normal 20px/24px Ubuntu;
     letter-spacing: 0px;
     color: #5C5C5C;
+    margin-top: -20px;
 }
 .cust-login-container input {
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -224,6 +225,17 @@ input.my-custom-input{
         font: normal normal bold 20px/24px Ubuntu;
         letter-spacing: 0px;
         color: #FFFFFF;
+}
+.custom-input{
+    box-shadow: 0px 4px 64px #13173D14;
+    border-radius: 20px;
+    height: 50px;
+    font: normal normal normal 16px/29px Ubuntu;
+    letter-spacing: 0px;
+    color: #969696;
+}
+.custom-button{
+    border-radius: 20px;
 }
 @media (max-width:991px) {
     .become-instructor .layout-cont{
@@ -554,7 +566,7 @@ input.my-custom-input{
 }
 .custom-testomonials {
     background: rgba(0, 0, 0, 0.05);
-    text-align: center;
+    /* text-align: center; */
     padding: 5% 0;
 }
 
@@ -593,6 +605,7 @@ input.my-custom-input{
 
 .custom-testomonials .columns-container .column-boxes .box p {
     font-size: 15px;
+    text-align: justify;
 }
 
 .custom-testomonials .columns-container .column-boxes .box h6 {

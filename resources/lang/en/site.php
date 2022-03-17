@@ -76,7 +76,8 @@ return [
     'top_rate' => 'Top rate',
     'top_sellers' => 'Top sellers',
     'top_sellers_subtitle' => '#Know best sellers and contact them',
-    'become_instructor' => 'Become instructor',
+    'become_instructor' => 'BECOME A TEACHER',
+    'become_instructor_subt' => 'Join with us and be our teacher',
     'become_instructor_success_request' => 'Your request send successfully and it will be reviewed soon.',
     'extra_information' => 'Extra information',
 
